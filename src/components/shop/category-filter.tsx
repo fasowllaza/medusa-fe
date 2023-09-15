@@ -44,7 +44,7 @@ export const CategoryFilter = () => {
 			{ scroll: false }
 		);
 	}
-	const items = data?.categories.data;
+	const items = data?.collections?.data	
 	return (
 		<div className="block border-b border-gray-300 pb-7 mb-7">
 			<h3 className="text-heading text-sm md:text-base font-semibold mb-7">
@@ -54,10 +54,10 @@ export const CategoryFilter = () => {
 				{items?.map((item: any) => (
 					<CheckBox
 						key={item.id}
-						label={item.name}
-						name={item.name.toLowerCase()}
-						checked={formState.includes(item.slug)}
-						value={item.slug}
+						label={item.title}
+						name={item.title.toLowerCase()}
+						checked={formState.includes(item.handle)}
+						value={item.handle}
 						onChange={handleItemClick}
 					/>
 				))}
