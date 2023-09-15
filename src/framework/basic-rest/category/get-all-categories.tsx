@@ -11,17 +11,6 @@ export const fetchCategories = async ({ queryKey }: any) => {
   return { categories: { data: data as Category[] } };
 };
 
-const fetchAncientCategories = async ({ queryKey }: any) => {
-  const [_key, _params] = queryKey;
-  const {
-    data: { data },
-  } = await http.get(API_ENDPOINTS.CATEGORIES_ANCIENT);
-  return { categories: { data: data as Category[] } };
-};
-
 export const useCategoriesQuery = (options: CategoriesQueryOptionsType) => {
-  if (options.demoVariant === 'ancient') {
-    return useQuery<{ categories: { data: Category[] } }, Error>([API_ENDPOINTS.CATEGORIES, options], fetchAncientCategories);
-  }
   return useQuery<{ categories: { data: Category[] } }, Error>([API_ENDPOINTS.CATEGORIES, options], fetchCategories);
 };
