@@ -1,3 +1,4 @@
+import React from "react";
 import ProductCard from "@components/product/product-card";
 import Button from "@components/ui/button";
 import type { FC } from "react";
@@ -22,22 +23,27 @@ export const ProductGrid: FC<ProductGridProps> = ({ className = "" }) => {
 	if (error) return <p>{error.message}</p>;
 
 	const { t } = useTranslation("common");
+	React.useEffect(() => {
+	},[data])
 
 	return (
 		<>
+				<p>{JSON.stringify(data?.pages[0].data[1]	)}</p>
 			<div
 				className={`grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-3 lg:gap-x-5 xl:gap-x-7 gap-y-3 xl:gap-y-5 2xl:gap-y-8 ${className}`}
 			>
 				{isLoading && !data?.pages?.length ? (
 					<ProductFeedLoader limit={20} uniqueKey="search-product" />
 				) : (
-					data?.pages?.map((page) => {
-						return page?.data?.map((product: Product) => (
+					data?.pages?.map((page:any) => {
+						return page?.data.map((product: Product) => (
+							<>
 							<ProductCard
 								key={`product--key${product.id}`}
 								product={product}
 								variant="grid"
 							/>
+							</>
 						));
 					})
 				)}

@@ -11,7 +11,7 @@ export const API_ENDPOINTS = {
   COLLECTIONS: '/collections.json',
   BRANDS: '/brands.json',
   BRANDS_ANCIENT: '/brands_ancient.json',
-  PRODUCTS: '/products.json',
+  PRODUCTS: '/store/products?limit=12&offset=0&is_giftcard=false',
   PRODUCTS_2: '/products_2.json',
   PRODUCTS_ANCIENT: '/products_ancient.json',
   FEATURED_PRODUCTS: '/featured_products.json',
